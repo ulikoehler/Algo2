@@ -63,6 +63,24 @@
 
 \maketitle
 \section*{Aufgabe 1}
+Es gelte A $\leq^{\rho}$ B, sowie B $\leq^{\rho}$ C für $A,B,C \in \Sigma^*$
+Aufgrund der Def. der Relation $\leq^{\rho}$ ex. nun zwei polynomielle Funktionen
+$f, g : \Sigma^* \rightarrow \Sigma^*$, mit:
+\begin{itemize}
+ \item $\forall a \in A: f(a) \in B$
+ \item $\forall b \in B: g(b) \in C$
+\end{itemize}
+Daraus folgt direkt die Existenz einer Funktion $\tau : \Sigma^* \rightarrow \Sigma^*$ mit $\tau(x) = g(f(x))$
+Es ist nun zu beweisen dass für Polynome (eben die Asymptotischen Laufzeiten von f und g) die Verknüpfungsrelation ° transitiv ist,
+d.h. $\tau$ immer ebenfalls eine Polynomielle Laufzeit besitzt.
+Für alle Polynome $P(x)$ mit Grad $n$ gilt: $P(x) := \sum^n_{i=0}a_ix^i$
+Betrachten wir den i-ten Term $a_ix^i$, für ein zweites Polynom $Q(x)$ von Grad n ist gerade
+$P(Q(x))$ für diesen Term $\sum^m_{j=0}a_ix^ib_jx^j = \sum^m_{j=0}a_ib_jx^{i+j}$, was ein Polynom ist.
+Da $P(Q(x))$ daher eine Summe von Polynomen ist, ist es wiederum ein Polynom (trivial).
+Daraus ergibt sich, dass für die Polynome $P,Q$ sodass $f \in \mathcal{O}(P(n)) ; g \in \mathcal{O}(Q(n))$ eben auch
+$\tau \in \mathcal{O}(P(Q(n)))$ wobei zuvor bewiesen wurde dass $P(Q(n))$ gerade wieder ein Polynom ist.
+Diese Aussage ist äquivalent zur zu beweisenden Transitivität, da dann ja eben gilt A $\leq^{\rho}$ C,
+da die Bedingung für die Relation $\leq^{\rho}$ ja lediglich  $\tau \in \mathcal{O}(P(Q(n)))$ ist, was zuvor bewiesen wurde.
 
 \section*{Aufgabe 2}
 
