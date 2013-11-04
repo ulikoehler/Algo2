@@ -2,7 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{listingsutf8}
 \usepackage[pdftex]{graphicx}
-\usepackage[ngerman]{babel}
+%\usepackage[ngerman]{babel}
 \usepackage{url}
 \usepackage{hyperref}
 \usepackage{amsfonts}
@@ -57,7 +57,7 @@
 }
 
 %opening
-\title{Übungsblatt 0}
+\title{Übungsblatt 1}
 \author{Uli Köhler (10580373), Tobias Harrer (10575835)}
 \begin{document}
 
@@ -67,7 +67,27 @@
 \section*{Aufgabe 2}%U
 
 \section*{Aufgabe 3}%T
-
+%Beweisen Sie, dass wenn P ∈ NPO ist, das zu P gehörige Entscheidungsproblem in NP ist.
+%Entscheidungsproblem eines Optimierungsproblems: Es soll entsch. werden, ob d. opt.Lösung besser als vorg. Schranke ist.
+Geg. Optimierungsproblem P, dann ist P' = $\{x \in I : \exists y \in S(x) : \mu(x, y) = opt(\mu(x, y), B)\}$ das zugehörige Entscheidungsproblem. \newline
+Zu zeigen: \begin{itemize}
+     \item $\forall$ x mit P'(x) = 1 $\exists$ Zertifikat z : M(x,z) = 1
+     \item $\forall$ x mit P'(x) = 0 $\forall$ Zertifikat z : M(x,z) = 0
+    \end{itemize}
+    
+Wenn das Entscheidungsproblem ein positives Ergebnis liefert (P'(x) = 1), dann gibt es auch ein Zertifikat z, das in polynomieller Zeit M(x,z) = 1
+berechnet, da per Definition von NPO in polynomieller Zeit entschieden werden kann, ob $x \in I$ ist oder nicht, und die Größe der Lösung
+polynomiell in der Eingabegröße beschränkt ist. Ist P'(x) = 0, so liefert z auch M(x,z) = 0.
 \section*{Aufgabe 4}%T
+%(a) Zeigen Sie, dass TSP ∈ NPO.
+\subsection*{a)}
+Zu zeigen: \begin{itemize}
+            \item  Es kann in polynomieller Zeit entschieden werden, ob $x \in I$ ist oder nicht, d.h. $I \in P$.
+	    \item Die Größe jeder Lösung ist polynomiell in der Eingabegröße beschränkt, d.h. $\exists$ ein Polynom p, so dass $\forall x \in I$
+	    und $\forall y \in S(x)$ gilt: $||y|| \leq p(||x||)$.
+	    \item Das Maß $\mu$ ist in polynomieller Zeit berechenbar.
+           \end{itemize}
+
+%(b) Zeigen Sie, dass das zu TSP gehörige Entscheidungsproblem NP-hart ist.
 
 \end{document}
