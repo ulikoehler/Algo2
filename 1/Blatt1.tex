@@ -80,7 +80,6 @@ Das Ziel ist, eine rekursive Operation $KNF(x)$ auf einen derartigen Baum zu def
 
 \section*{Aufgabe 3}%T
 %Beweisen Sie, dass wenn P ∈ NPO ist, das zu P gehörige Entscheidungsproblem in NP ist.
-%Entscheidungsproblem eines Optimierungsproblems: Es soll entsch. werden, ob d. opt.Lösung besser als vorg. Schranke ist.
 Geg. Optimierungsproblem P, dann ist P' = $\{x \in I : \exists y \in S(x) : \mu(x, y) = opt(\mu(x, y), B)\}$ das zugehörige Entscheidungsproblem. \newline
 Zu zeigen: \begin{itemize}
      \item $\forall$ x mit P'(x) = 1 $\exists$ Zertifikat z : M(x,z) = 1
@@ -99,11 +98,15 @@ Zu zeigen: \begin{itemize}
 	    und $\forall y \in S(x)$ gilt: $||y|| \leq p(||x||)$.
 	    %\item Das Maß $\mu$ ist in polynomieller Zeit berechenbar.
            \end{itemize}
-Es kann in polynomieller Zeit entschieden werden, ob die Eingabe ein vollständiger Gaph ist. Außerdem kann in polynomieller Zeit entschieden werden,
+Es kann in polynomieller Zeit entschieden werden, ob die Eingabe ein vollständiger Graph ist. Außerdem kann in polynomieller Zeit entschieden werden,
 ob die Lösung ein Hamiltonkreis ist.
 
 %(b) Zeigen Sie, dass das zu TSP gehörige Entscheidungsproblem NP-hart ist.
 \subsection*{b)}
-
+%Entscheidungsproblem eines Optimierungsproblems: Es soll entsch. werden, ob d. opt.Lösung besser als vorg. Schranke ist.
+In Aufgabe 4 a) wurde gezeigt, dass TSP $\in$ NPO ist, des weiteren gilt aus Aufgabe 3) P $\in$ NPO $\Rightarrow$ P' $\in$ NP, wobei P' das zu P gehörige Entscheidungsproblem ist.
+Man muss also noch zeigen, dass für alle Sprachen/Entscheidungsprobleme L $\in$ NP gilt: L $\leq_P$ P'.
+In Vorlesungen der theoretischen Informatik wurde gezeigt, dass die folgenden NP-vollständigen Probleme in der Reihenfolge polynomiel reduzierbar sind: SAT $\leq_P$ 3KNF-SAT
+$\leq_P$ gerichteter Hamiltonkreis $\leq_P$ unger. HK $\leq_P$ Travelling Salesman Problem. Daher sind alle Entscheidungsprobleme aus NP auf das TSP polynomiel reduzierbar.
 
 \end{document}
