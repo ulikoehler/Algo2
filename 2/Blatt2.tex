@@ -100,13 +100,26 @@ $n=20000$, $\delta = 0.05$, $X :=$ "Münze zeigt Kopf",
 \subsection*{a)}
 %a) Wahrscheinlichkeit für Kopf 0.5
 $p = 0.5$, $E(X) = n*p = 10000$\newline
+X kommt mind. $5\%$ häufiger als der EW vor:\newline
 $Ws(X \geq (1+\delta) * E(X)) \leq (\frac{e^{\delta}}{(1+\delta)^{1+\delta}})^{E(X)}$\newline
-$=(\frac{e^{0.05}}{(1.05)^{1.05}})^{10000} = 4.567*10^{-6}$\newline
-$\leq exp(-\frac{E(X)*\delta^2}{3}) = 2.4*10^{-4}$
-
+$=(\frac{e^{-0.05}}{(1.05)^{1.05}})^{10000} = 4.567*10^{-6}$\newline
+$\leq exp(-\frac{E(X)*\delta^2}{3}) = exp(-\frac{10000*0,05^2}{3}) = 2.4*10^{-4}$\newline \newline
+X kommt mind. $5\%$ weniger als der EW vor:\newline
+$Ws(X \leq (1-\delta) * E(X)) \leq (\frac{e^{-\delta}}{(1-\delta)^{1+-\delta}})^{E(X)}$\newline
+$=(\frac{e^{-0.05}}{(0.95)^{0.95}})^{10000} = 0.00000301$\newline
+$\leq exp(-\frac{E(X)*\delta^2}{2}) = exp(-\frac{10000*0,05^2}{2}) = 0,000003727$\newline
+%Zweite Formel
 \subsection*{b)}
 %b) Wahrscheinlichkeit für Kopf 0.1
-$p = 0.1$, $E(X) = n*p = 2000$
+$p = 0.1$, $E(X) = n*p = 2000$\newline
+X kommt mind. $5\%$ häufiger als der EW vor:\newline
+$Ws(X \geq (1+\delta) * E(X)) \leq (\frac{e^{\delta}}{(1+\delta)^{1+\delta}})^{E(X)}$\newline
+$=(\frac{e^{0.05}}{(1.05)^{1.05}})^{2000} = 0.08549095 = 8.55\%$\newline
+$\leq exp(-\frac{E(X)*\delta^2}{3}) = exp(-\frac{2000*0.05^2}{3}) = 0.188875603 = 18.89\%$\newline \newline
+X kommt mind. $5\%$ weniger als der EW vor:\newline
+$Ws(X \leq (1-\delta) * E(X)) \leq (\frac{e^{-\delta}}{(1-\delta)^{1+-\delta}})^{E(X)}$\newline
+$=(\frac{e^{-0.05}}{(0.95)^{0.95}})^{2000} = 0.078650549 = 7.84\%$\newline
+$\leq exp(-\frac{E(X)*\delta^2}{2}) = exp(-\frac{2000*0,05^2}{2}) = 0.082084999 = 8.2\%$\newline
 
 \section*{Aufgabe 4}%T
 
