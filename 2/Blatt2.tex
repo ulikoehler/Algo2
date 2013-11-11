@@ -1,5 +1,4 @@
 \documentclass[a4paper,10pt,oneside,leqno]{scrartcl}
-%\usepackage[paper=a4paper,includefoot,includehead,left=30mm,right=20mm,top=20mm,bottom=20mm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage{listingsutf8}
 \usepackage[pdftex]{graphicx}
@@ -66,24 +65,8 @@
 \section*{Aufgabe 1}%U
 
 \section*{Aufgabe 2}%U
-Zuerst muss gezeigt werden: $Erfüllbarkeit(F_1\vee F2) \leftrightarrow Erfüllbarkeit((F_1\vee x) \wedge (F_2 \vee \overline{x}))$:\\
-Für $x = False$: $(F_1\vee x) \wedge (F_2 \vee \overline{x}) = (F_1\vee False) \wedge (F_2 \vee True) = F1 \wedge True = F1$\\
-\textrightarrow\ ist erfüllbar genau dann wenn $F1$ erfüllbar ist
-
-Für $x = True$: $(F_1\vee x) \wedge (F_2 \vee \overline{x}) = (F_1\vee True) \wedge (F_2 \vee False) = True \wedge F2 = F2$\\
-\textrightarrow\ ist erfüllbar genau dann wenn $F2$ erfüllbar ist
-
-x ist eine Boolesche Variable, daher ergibt sich (trivial), dass für x keine Werte außer 0 oder 1 auftreten können \textrightarrow\ 
-$Erfüllbarkeit(F_1\vee F2) \leftrightarrow Erfüllbarkeit((F_1\vee x) \wedge (F_2 \vee \overline{x}))$ q.e.d.\\[5mm]
-
-Mit diesem eben gezeigten Lemma kann nun eine Allgemeine Formel des SAT-Problem (d.h. eine Formel die nicht notwendigerweise in KNF gegeben ist) in KNF (= CNF) transformiert werden. Zu zeigen ist nun, dass diese Reduktion in Polynomialzeit funktioniert.
-
-Es ist bekannt, dass die Eingabegröße, d.h. die Anzahl der Terme beschränkt ist.
-Daraus folgt eben die Polynomialität der Reduktion, genau dann wenn das obige Lemma nicht mehrfach auf einen einzelnen Ausdruck angewendet werden kann (was zu Loops führen könnte). Dies ist offensichtlich, da sich zwar $F1 \vee F2$ auf die beiden einzelnen Terme $(F_1\vee x)$ und $(F_2 \vee \overline{x})$ anwenden ließe, nicht jedoch auf den gesamten resultierenden Term (da dort ein Konstrukt in der Form $F_x \wedge F_y$ auftritt \textrightarrow\ Anzahl der Anwendungen des Lemmas verhält sich polynomiell zur Eingabe.
-
-
-Zudem ist offensichtlich, dass pro Anwendung des Lemmas lediglich eine einzige Variable ($x$) eingeführt wird, d.h. die Ausgabegröße der Reduktion (= die Eingabegröße von CNF-SAT) ist polynomiell zur ursprünglichen Eingabegröße
-
+Zuerst muss gezeigt werden: $Erfüllbarkeit(F_1\vee F2) \leftrightarrow Erfüllbarkeit((F_1\vee x) \wedge (F_2 \vee \overline{x}))$:
+DeMorgan: $(F_1\vee x) \wedge (F_2 \vee \overline{x}) = \not $
 \section*{Aufgabe 3}%T
 $n=20000$, $\delta = 0.05$, $X :=$ "Münze zeigt Kopf",
 \subsection*{a)}
@@ -111,5 +94,11 @@ $=(\frac{e^{-0.05}}{(0.95)^{0.95}})^{2000} = 0.078650549 = 7.84\%$\newline
 $\leq exp(-\frac{E(X)*\delta^2}{2}) = exp(-\frac{2000*0,05^2}{2}) = 0.082084999 = 8.2\%$\newline
 
 \section*{Aufgabe 4}%T
-
+Das MaxCut-Problem lässt sich auf das Problem zurückführen, einen bipartiten Teilgraphen $T$ zu finden,
+in dem $T$ und der komplementäre Graph $T' = V - T$ mindestens so viele Kanten zueinander haben, wie alle
+anderen bipartiten Teilgraphen.\newline
+Der bipartite Teilgraph $T$ hat zu $T'$ höchstens $|T| * |T'|$ Kanten, wenn nämlich alle Knoten $\in T$ mit allen
+Knoten $\in T'$ verbunden sind. Daher muss man ausgehend von einer zufälligen Partition der Knoten versuchen,
+die Knoten zwischen den Partitionen $T$ und $T'$ auszutauschen. Man setzt den Knoten-Tausch zwischen den Partitionen so lange fort, bis die maximale
+Anzahl an möglichen Kanten erreicht ist ($|T| * |T'|$).
 \end{document}
