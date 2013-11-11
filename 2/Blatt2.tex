@@ -57,26 +57,15 @@
 }
 
 %opening
-\title{Übungsblatt 1}
+\title{Übungsblatt 2}
 \author{Uli Köhler (10580373), Tobias Harrer (10575835)}
 \begin{document}
 
 \maketitle
 \section*{Aufgabe 1}%U
-Es sei das Zertifikat $Z := \langle z_1,...z_n\rangle$ frei gewählt, wobei $z_i \in V$.
-Um zu zeigen dass $LSC \in NP$ muss gezeigt werden dass $|Z| = k$ sowie dass für $\forall i \in [1,...,k]$ gilt:
-$\{z_i,z_{(i mod k) + k}\}$. Diese Transformation ist von polynomieller Komplexität (aus Vorlesung bekannt).
-Zur Reduktion sei das Hamiltonkreisproblem betrachtet, das auf LSC reduziert werden soll.
-Beobachtung: Jeder Kreis der Länge $|V|$ ist ein Hamiltonkreis. Daher muss nur $k = |V|$ gewählt werden, dadurch reduziert sich nach obiger Definition eben LSC auf HC. Da HC $\in NP$ ist somit aufgrund der polynomiellen Tranformation auch LSC $\in NP$, q.e.d
 
 \section*{Aufgabe 2}%U
-Wir betrachten F im Folgenden als Baum von Operationen, deren Blätter Literale sind.
-Das Ziel ist, eine rekursive Operation $KNF(x)$ auf einen derartigen Baum zu definieren. Das kann wie Folgt getan werden. Sei F ein Literal.
-\begin{itemize}
- \item $KNF(F_1 \wedge F_2) := KNF(F1) \wedge KNF(F2)$
- \item $KNF(F_1 \wedge F_2) := \neg KNF(F1) \wedge \neg KNF(F2)$ (DeMorgan)
- \item $KNF(F) = F$
-\end{itemize}
+
 
 \section*{Aufgabe 3}%T
 \subsection*{a)}
@@ -86,6 +75,5 @@ Das Ziel ist, eine rekursive Operation $KNF(x)$ auf einen derartigen Baum zu def
 %b) Wahrscheinlichkeit für Kopf 0.1
 
 \section*{Aufgabe 4}%T
-
 
 \end{document}
