@@ -65,6 +65,18 @@
 \maketitle
 \section*{Aufgabe 1}%U
 
+Der gegebenen Term hat offensichtlich nach der gegebenen Definition $5n$ Operationen, d.h. die Größe $5n$. Zu zeigen ist, dass bei der wiederholten Anwendung nur der DeMorganschen Regeln aus Blatt 1, Aufgabe 2 (d.h. der Konstruktion aus selbiger Aufgabe).
+
+Dazu sei nur der Term ($(x_i \wedge \overline{y_i}) \vee (y_i \wedge \overline{x_i})$) betrachtet, der im gegebenen Term exakt $n$ mal vorkommt.
+Eine Anwendung der DeMorganschen Regeln ergibt $\neg(x_i \wedge \overline{y_i}) \wedge \neg(\overline{x_i} \wedge y_i)$. Es ist trivialerweise sichtbar, dass sich die Größe der Formel somit um zwei Einheiten erhöht hat.
+
+Eine weitere Anwendung auf die beiden Teilterme ergibt:\\
+$\neg(\neg x_i \vee \neg\neg y_i) \wedge \neg(\neg \neg x_i \vee \neg x_i)$. Somit hat sich die Größe der Formel wiederum um zwei Einheiten erhöht, also insgesamt um 4 Einheiten.
+
+Für jeden weiteren Term aus $\vee_{i=1}^{n}$ führt nun durch wiederholte Anwendung von DeMorgan dazu, dass eben die Anzahl der Symbole, also die Größe der Formel, insgesamt exponentiell wächst, da für jeden hinzugefügten Term die deMorganschen Regeln öfter angewendet werden müssen und somit nicht mehr eine polynomielle Ausgabegröße (der Reduktion, d.h. Eingabegröße von CNF-SAT) erzeugen können.
+
+Daraus kann geschlussfolgert werden, dass für den Reduktionsbeweis eben die Regeln aus Blatt 1, Aufgabe 2 nicht mehr ausreichen. $SAT \leq_p CNF-SAT$ kann also nur mit dieser Methode zur Reduktion weder bewiesen noch widerlegt werden.
+
 \section*{Aufgabe 2}%U
 Zuerst muss gezeigt werden: $Erfüllbarkeit(F_1\vee F2) \leftrightarrow Erfüllbarkeit((F_1\vee x) \wedge (F_2 \vee \overline{x}))$:\\
 Für $x = False$: $(F_1\vee x) \wedge (F_2 \vee \overline{x}) = (F_1\vee False) \wedge (F_2 \vee True) = F1 \wedge True = F1$\\
@@ -81,8 +93,7 @@ Mit diesem eben gezeigten Lemma kann nun eine Allgemeine Formel des SAT-Problem 
 Es ist bekannt, dass die Eingabegröße, d.h. die Anzahl der Terme beschränkt ist.
 Daraus folgt eben die Polynomialität der Reduktion, genau dann wenn das obige Lemma nicht mehrfach auf einen einzelnen Ausdruck angewendet werden kann (was zu Loops führen könnte). Dies ist offensichtlich, da sich zwar $F1 \vee F2$ auf die beiden einzelnen Terme $(F_1\vee x)$ und $(F_2 \vee \overline{x})$ anwenden ließe, nicht jedoch auf den gesamten resultierenden Term (da dort ein Konstrukt in der Form $F_x \wedge F_y$ auftritt \textrightarrow\ Anzahl der Anwendungen des Lemmas verhält sich polynomiell zur Eingabe.
 
-
-Zudem ist offensichtlich, dass pro Anwendung des Lemmas lediglich eine einzige Variable ($x$) eingeführt wird, d.h. die Ausgabegröße der Reduktion (= die Eingabegröße von CNF-SAT) ist polynomiell zur ursprünglichen Eingabegröße
+Zudem ist offensichtlich, dass pro Anwendung des Lemmas lediglich eine einzige Variable ($x$) eingeführt wird, d.h. die Ausgabegröße der Reduktion (= die Eingabegröße von CNF-SAT) ist polynomiell zur ursprünglichen Eingabegröße.
 
 \section*{Aufgabe 3}%T
 $n=20000$, $\delta = 0.05$, $X :=$ "Münze zeigt Kopf",
