@@ -64,6 +64,34 @@
 \maketitle
 \section*{Aufgabe 1}%U
 
+Zu zeigen ist: $E3SAT \in {NP} \leftrightarrow \text{Zertifikat ist in Polynomialzeit verifizierbar}$
+
+Statt dies direkt zu zeigen wird hier gezeigt dass $KNF-Sat \leq_p E3SAT$, also dass eine beliebige KNF-Formel in Polynomialzeit in 3-konjunktive Normalform umgewandelt werden kann.
+
+Es sein nun die Transformation $\tau(k)$ von $KNF-SAT \rightarrow E3SAT$ wie Folgt definiert, wobei k eine Klausel, d.h. ein $K_i$ aus $\wedge_{i=0}^n K_i$ ($k = (x_i) \rightarrow \text{foobar}$ bedeutet: Wende die Regel foobar an, wenn k die Form $(x_i)$ hatn):
+\begin{itemize}
+ \item  $k = (x_i) \rightarrow \tau(k) := (x_i \vee x_i \vee x_i)$ Korrektheit: Trivial, Laufzeit: Obviously polnomiell (Zahl der Klauseln bleibt gleich)
+ \item  $k = (x_i \vee x_{i+1}) \rightarrow \tau(k) :=  (x_i \vee x_{i+1} \vee x_i)$  \textbf{Korrektheit}: Trivial, da $\vee$ kommutativ und $x_i \vee x_i$ Laufzeit: Anzahl der Klauseln bleibt gleich, also \textbf{Polynomialzeit}
+ \item $k = (x_i \vee x_{i+1} \vee x_{i+2}) \rightarrow \tau(k) := (x_i \vee x_{i+1} \vee x_{i+2})$ (Klausel ist bereits in 3-KNF. Die  \textbf{Korrektheit} ist also trivial. Anzahl der Klauseln bleibt gleich, also \textbf{Polynomialzeit})
+ \item Allgemeiner Fall wenn die Anzahl der Literale in dieser Klausel $(=n)$ mit $n > 3$ ist: $k = \bigvee_{l=0}^{n} x_l \rightarrow \tau(k) := ( (x_1 \vee x_2 \vee y_1) \wedge (\bigwedge_{l=n-2}^{l=1} (\overline{y_l} \vee x_{l + 2} \vee y_{l+1})) \wedge (\overline{y_{n-3}} \vee x_{n-1} \vee x_{n})$ 
+Hierbei sind die $y_i$ jeweils neue Variablen, die im Rest der Formel nicht vorkommen (für jede Anwendung des allgemeinen Falls müssen getrennte $y_i$ erzeugt werden). \textbf{Polynomialzeit}: Trivial, da $< 2n$ Klauseln erzeugt werden. Korrektheit siehe unten.
+\end{itemize}
+
+Für die Gesamte Gleichung muss noch gezeigt werden, dass die Erfüllbarkeit der 3CNF äquivalent zur originalen CNF ist.
+
+Dafür muss gezeigt werden dass es Variablenbelegungen für die neuen Variablen $y_i$ gibt, sodass die Erfüllbarkeit äquivalent zur originalen Form ist. Für die ersten beiden Fälle wurde dies bereits gezeigt, außerdem gibt es hier keine $y_i$, es muss also für den dritten Fall gezeigt wurden.
+
+Für Belegungen der Formel F mit mindestens einem wahren literal, sei $k$ der Index (1-based) des ersten wahren literals.
+
+Ist $j=1$ oder $j=2$, dann können aufgrund von $(x_1 \vee x_2 \vee y_1)$ alle $y$ auf $False$ festgesetzt werden.
+Äquivalentes gilt, wenn $i=n$ oder $i=n-1$ aufgrund des letzten Terms $(\overline{y_{n-3}} \vee x_{n-1} \vee x_{n})$, allerdings müssen hier alle $y$ auf $True$ festgesetzt werden, damit auch die anderen Klauseln $True$ bleiben.
+
+Ansonsten, d.h. im Allgemeinen Fall, d.h. mit $2 < j < n-1$, müssen alle $y_i$ mit $i < (j-i)$ gleich $True$ gesetzt werden. Alle übrigen $y_i$ werden auf $False$ gesetzt. Dadurch sind die Terme vor $x_j$ durch die y-Terme erfüllbar.
+
+Die Laufzeit des gesamten Algorithmus ist wie oben bewiesen, Polynomiell, genauergesagt $O(n^2)$, da maximal $n-3$ neue Variablen pro Klausel eingefügt wurden.
+
+Dadurch ist die KNF in 3KNF polynomiell transformierbar $\rightarrow KNF-Sat \leq_p E3SAT \rightarrow E3SAT \in NP$
+
 \section*{Aufgabe 2}%U
 
 \section*{Aufgabe 3}%T
