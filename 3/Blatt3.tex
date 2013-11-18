@@ -1,4 +1,4 @@
-\documentclass[a4paper,10pt,oneside,leqno]{scrartcl}
+\documentclass[a4paper,10pt,oneside,reqno]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage{listingsutf8}
 \usepackage[pdftex]{graphicx}
@@ -93,7 +93,18 @@ Die Laufzeit des gesamten Algorithmus ist wie oben bewiesen, Polynomiell, genaue
 Dadurch ist die KNF in 3KNF polynomiell transformierbar $\rightarrow KNF-Sat \leq_p E3SAT \rightarrow E3SAT \in NP$
 
 \section*{Aufgabe 2}%U
+Sei $P = (I, S, \mu, min)$ ein $\mathrm{NP}$-Hartes, polynomiell beschränktes Minimierungsproblem. Wir nehmen ferner o.b.d.a. an, es gäbe ein echt polynomielles Approximationsschema A für P. Dann gibt es ein Polynom $p$, so dass die Laufzeit von $A(\epsilon)$ durch $p(\lVert x \rVert + \epsilon^{-1})$ beschränkt ist, wobei $\epsilon$ sich auf die Approximationsgüte bezieht. Da $P$ polynomiell beschränkt ist, gibt es ein weiteres Polynom $q$, so dass für jede Eingabe $x\in I$ gilt $\mu^*(x) \geq q(\lVert x \rVert)$. Wir wählen ein $\epsilon := 1/(1+q(\lVert x\rVert))$, dann liefert $A(\epsilon)$ für jedes $x$ eine $(1 + 1/q(\lVert x\rVert))$-Approximation der optimalen
+Lösung, d.h. es gilt:
+$\frac{\mu(x,A(\epsilon,x))}{\mu^*(x)} \leq 1 + \epsilon = \frac{q(\lVert x\rVert) + 1}{q(\lVert x\rVert)}$
+Daraus ergibt sich \begin{align}
+              \mu(x,A(\epsilon,x)) &\leq \mu^*(x) + \epsilon\mu^*(x) \\1
+              & = \mu^*(x) + \frac{\mu^*(x) + 1 - 1}{q(\lVert x\rVert) + 1} \\
+              & \text{da } \mu^*(x) \leq q(\lVert x\rVert) \\
+              & \leq \mu^*(x) + \frac{q(\lVert x\rVert)}{q(\lVert x\rVert) + 1} \\
+              & < \mu^*(x) + 1
+             \end{align}
 
+Da $\mu^*(x)$ per Def. ganzzahlig ist folgt daraus dass $A(\epsilon)$ eine optimale Lösung liefert. Daraus folgt direkt der zu beweisende Satz
 \section*{Aufgabe 3}%T
 
 \section*{Aufgabe 4}%T
