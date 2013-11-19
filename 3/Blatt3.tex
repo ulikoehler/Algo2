@@ -57,7 +57,7 @@
 }
 
 %opening
-\title{Übungsblatt 2}
+\title{Übungsblatt 3}
 \author{Uli Köhler (10580373), Tobias Harrer (10575835)}
 \begin{document}
 
@@ -106,7 +106,26 @@ Daraus ergibt sich \begin{align}
 
 Da $\mu^*(x)$ per Def. ganzzahlig ist folgt daraus dass $A(\epsilon)$ eine optimale Lösung liefert. Daraus folgt direkt der zu beweisende Satz
 \section*{Aufgabe 3}%T
+Nach Lemma 5.6 sind Reduktionen transitiv, das heißt geg. drei Optimierungsprobleme A=(I,S,$\mu$, opt), B=(I',S',$\mu$', opt'), C=(\~{I},\~{S},\~{$\mu$},\~{o}pt).\newline
+Dann gibt es zwei Tripel P=(f,g,$\alpha$) mit A$\leq_{PTAS}$B und P'=(f',g',$\alpha$') mit B$\leq_{PTAS}$C.\newline
+Z.z.: daraus folgt es existiert Tripel \~{P}=(\~{f},\~{g},\~{$\alpha$}) mit A$\leq_{PTAS}$C.\newline
+Es gilt:\begin{enumerate}
+         \item B=P(A), denn f(I)=I', und g(S')=S (siehe Abb. 5.6)
+         \item C=P'(B): f'(I')=\~{I}, g'(\~{S})=S'
+        \end{enumerate}
+        Setzt man nun B aus 1. in P'(B) aus 2. ein, erhält man:\newline
+        C=P'(B)=P'(P(A))=\~{P}(A), denn \~{I}=f'(I')=f'(f(I)), S=g(S')=g(g'(\~{S}))\newline
+        $\alpha$ ist eine polynomielle, inv.bare Funktion, daher ist auch $\alpha$($\alpha$') = \~{$\alpha$}\newline
+        Insgesamt folgt, dass \~{P}(A) = C, somit ist die Reduktion transitiv.
 
 \section*{Aufgabe 4}%T
+Z.z.: $\forall$ Instanz von MaxE3SAT $\exists$ Belegung, die mindestens $\frac{7}{8}$ der
+Klauseln erfüllt. Dies ist aussagenlogisch äquivalent zu: \newline
+$\forall$ Instanz von MaxE3SAT $\exists$ Belegung, die höchstens $\frac{1}{8}$ der
+Klauseln \emph{nicht} erfüllt.\newline
+Sei X:="Klausel $C_i$ ist nicht erfüllbar" eine i.i.d. Zufallsvariable, dann ist P(X)=$0.5^3=0.125$, denn eine Klausel ist nur dann "falsch", wenn alle (drei) Literale falsch sind. Der Erwartungswert,
+wieviele der i Klauseln unerfüllbar sind ist:\newline
+E(X) = P(X)*i = $i*0.125$, d.h. jede achte Klausel ist unerfüllbar. Die zu X komplementäre ZV ist $\overline{X}=$"Klausel ist erfüllbar", mit P($\overline{X}$)=1-P(X)=0.875.\newline
+Also ist der EW der erfüllbaren Klauseln: E($\overline{X}$)=P($\overline{X}$)*i = 0.875*i = $\frac{7}{8}$*i, was zu zeigen war.
 
 \end{document}
