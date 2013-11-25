@@ -101,7 +101,40 @@ Die Folgenden Faktoren spielen eine Rolle für die Laufzeit (Hinweis: Insertion 
 \end{itemize}
 
 \section*{Aufgabe 3}%T
+Als erstes muss das Zentrum des Baums/Sterns gefunden werden. Nach Def. 6.36 ist der Center-String $s_c$ 
+so zu wählen, dass $\Sigma_{j=1}^k d(s_c, s_j)$ minimal ist. Für die gegeben Sequenzen ergeben sich
+zusammen mit den zugehörigen Distanzen folgende Summen:
+\begin{enumerate}
+ \item $\Sigma_{j=1}^4 d(s_j, s_1) = 0 + 3 + 3 + 3 = 9$
+ \item $\Sigma_{j=1}^4 d(s_j, s_2) = 3 + 0 + 2 + 4 = 9$
+ \item $\Sigma_{j=1}^4 d(s_j, s_3) = 3 + 2 + 0 + 3 = 8$
+ \item $\Sigma_{j=1}^4 d(s_j, s_4) = 3 + 4 + 3 + 0 = 10$
+\end{enumerate}
+Daraus folgt, dass $s_3$ die geringste Distanz zu allen anderen Sequenzen hat. Mit meiner GoBi-
+Implementierung (/home/proj/biocluster/praktikum/genprakt-ws13/abgaben/assignment1/harrer/gotoh.jar) bekomme ich die folgenden Alignments:\newline
+\texttt{
+s3: CAATG\newline
+s1: CGA-A\newline\newline
+s3: CAATG-\newline
+s2: CAGTGA\newline\newline
+s3: C-AATG\newline
+s4: CGGATT\newline}
+
+Gemäß dem Hinweis aus der letzen Übungsbesprechung wird das MSA schrittweise vom Zentrum aus aufgebaut.
+\texttt{s3: CAATG\newline
+s1: CGA-A\newline\newline
+s3: CAATG-\newline
+s1: CGA-A-\newline
+s2: CAGTGA
+\newline\newline
+s3: C-AATG-\newline
+s1: C-GA-A-\newline
+s2: C-AGTGA\newline
+s4: CGGATT-}
 
 \section*{Aufgabe 4}%T
+Annahme: $M(\lfloor \frac{k+1}{2}\rfloor) > 3M$, also 
+$M(\lfloor \frac{k+1}{2}\rfloor) = \Sigma_{j=1}^k d(s_{\lfloor \frac{k+1}{2}\rfloor}, s_j)$ größer als
+das dreifache von $M$ sein, wobei nach Def. $M = M(1)$ ist. $M(\lfloor \frac{k+1}{2}\rfloor)$ ist das
 
 \end{document}
