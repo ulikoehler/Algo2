@@ -65,7 +65,43 @@
 \section*{Aufgabe 1}%U
 
 \section*{Aufgabe 2}%U
+\paragraph{Datenstruktur:}
+Die Datenstruktur sei eine verlinkte Liste von dynamisch erweiterbaren Arrays, z.B. \textit{LinkedList<LinkedList<Char>> alignments} in Java.
+Die (äußere) verlinkte Liste enthält die einzelnen, durch Gaps unterbrochenen Alignments, die durch Strings unterbrochen werden. Zudem wird eine Liste an noch zu iterierenden Baumknoten angegeben, z.B. \textit{LinkedList<Node> unprocessedNodes}. Außerdem wird eine Assoziative Struktur zur Zuordnung von einem Knoten zur diesem Knoten entsprechenden Sequenz (\textit{ArrayList<Char>} die in der oben genannten Sequenzliste enthalten ist) gespeichert, z.B. in Java \textit{HashMap<Node, ArrayList<Char>> nodeToAlignmentSequence}. Wichtig ist hier, dass die Werte dieses Mappings auf dieselben Instanzen wie oben verweisen.
+
+Das Alignment wird nun wie Folgt erstellt, sei $n$ die Anzahl der Sequenzen und $k$ die maximale Länge der Sequenzen: 
+
+Über den gegebenen Baum wird wie folgt iteriert:
+\textbf{Prozedur A} Für den aktuellen Knoten (Start: Wurzelknoten) werden alle Kindknoten aufgelistet (hat der Knoten keine Kindknoten, wird die Prozedur sofort beendet). Jeder dieser Kindknoten wird an die Liste der noch zu iterierenden Knoten angefügt. Es ergeben sich nun Paare aus dem aktuellen Knoten und einem Kindknoten. Ist die Liste an Alignments leer (d.h. ist der aktuelle Knoten der Wurzelknoten), so wird an die Liste der Alignments die Sequenz des Wurzelknotens angefügt und in \textit{nodeToAlignmentSequence} der Eintrag \textit{Wurzelknoten \textrightarrow eben in alignments eingefügte Sequenz} eingefügt. Für jedes Paar aus aktuellem Knoten und seinem Kindknoten wird nun die Prozedur B ausgeführt. Zudem werden alle Kindknoten an \textit{unprocessedNodes} angefügt. Der erste Knoten aus \textit{unprocessedNodes} wird nun entfernt und Prozedur A für diesen Knoten (als aktuellen Knoten) ausgeführt, bis \textit{unprocessedNodes} leer ist (\textrightarrow Termination).\\[5mm]
+
+\textbf{Prozedur B}. Eingabe: Paar aus Elternknoten $k_e$ und Kindknoten $k_k$. Dein beiden Knoten seien im Baum die Sequenzen $s_a$ und $s_b$ zugeordnet. Zuerst wird für diese beiden Sequenzen eine optimales paarweises Alignment berechnet $\mathcal{O}(n^2)$. Aufgrund der vorhergehenden Schritte ist bekannt, dass sich die Sequenz des Elternknotens bereits in \textit{alignments} und auch in in \textit{nodeToAlignmentSequence} vorhanden ist -- das Alignment für $s_e$ ist  	. Für jedes Zeichen des soeben berechneten paarweisen optimalen Alignments wird nun wie folgt vorgegangen:
+
+Wurde in die Sequenz $s_e$ beim paarweisen Alignmenteine Gap eingefügt, so wird in alle Alignments (\textrightarrow $\mathcal{O}(k)$ an der entsprechenden Position eine Gap eingefügt. Ansonsten wird das Zeichen an der entsprechenden Position im paarweisen Alignment von $s_k$ übernommen.
+
+Danach wird für alle Positionen, an denen das Alignment für $s_e$ bereits eine Gap enthielt, auch in das Alignment der Kindsequenz eine Gap eingefügt. Das resultierende Alignment wird nun an \textit{alignments} angefügt und das Mapping \textit{nodeToAlignmentSequence} wird entsprechend upgedated.
+
+\textbf{Einstiegspunkt} Am Anfang wird Prozedur A mit dem Wurzelknoten als aktuellem Knoten ausgeführt.
+
+\textit{Korrektheit} Die Korrektheit wurde bereits im Skript bewiesen.
+
+\textit{Termination} Da nur die Kindknoten in die Liste \textit{unprocessedNodes} eingefügt werden, und bei einer Iteration der Prozedur A einer der Knoten aus der Liste entfernt wird, wird Prozedur A für jeden Knoten im Baum genau einmal ausgeführt. Da Bäume \textit{per definitionem} keine Loops haben dürfen, wird Prozedur A für jeden Knoten genau einmal ausgeführt.
+
+\textit{Laufzeit}
+Die Folgenden Faktoren spielen eine Rolle für die Laufzeit (Hinweis: Insertion aus Sicht von $s_e$, d.h. Gap ist auf $s_k$):
+\begin{itemize}
+ \item Das Einfügen in die Listen bzw. Maps sowie das Abrufen der Alignment-Referenz für einen gegebenen Knoten wird als konstant angenommen. Einige mögliche Implementierungen, die z.B. immutable Strings als Alignments nutzen, haben allerdings eine $\mathcal{O}(k)$-Laufzeit für einige Operation. Es wird nicht davon ausgegangen, dass der Programmierer eine solche suboptimale Ausprägung implementiert.
+ \item Prozedur A wird für jede Sequenz exakt einmal ausgeführt (siehe auch Terminationsbeweis), benötigt (abgesehen von der Ausführung von Prozedur B) aber konstante Laufzeit
+ \item Prozedur B wird (n-1) mal ausgeführt, da es nicht für den Wurzelknoten, aber aufgrund der Baumstruktur für alle anderen Knoten genau ausgeführt wird
+ \item Die Berechnung eines optimalen paarweisen Alignments benötigt $\mathcal{O}(k^2)$ Zeit, wobei insgesamt (selbe Argumentation wie bei Proz. B) (n-1) Alignments ausgeführt werden.
+ \item Für jede Deletion/Substitution im paarweisen Alignment wird konstante Zeit benötigt
+ \item Für jede Insertion im paarweisen Alignment wird $\mathcal{O}(n)$ Zeit benötigt
+ \item Da das paarweise Alignment max. $2k$ lang ist, d.h. $\mathcal{O}(k)$ wird maximal $\mathcal{O}(k*n)$ Zeit (wenn das Alignment nur aus Insertionen besteht
+ \item Eine Ausführung von Prozedur B benötigt also im Worst Case $\mathcal{O}(k^2*n)$ Zeit.
+ \item Da Proz. A konstante Zeit benötigt, und Proz. B wie oben gezeigt (n-1) mal ausgeführt wird, benötigt die gesamte Prozedur, wie auch im Skript gezeigt, $\mathcal{O}(k^2*n^2)$ Zeit.
+\end{itemize}
 
 \section*{Aufgabe 3}%T
 
 \section*{Aufgabe 4}%T
+
+\end{document}
