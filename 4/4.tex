@@ -33,7 +33,7 @@
 
 \maketitle
 \section*{Aufgabe 1}%U
-Siehe weiter unten.
+Siehe weiter unten, nach Aufgabe 4.
 
 \section*{Aufgabe 2}%U
 \paragraph{Datenstruktur:}
@@ -104,8 +104,8 @@ s2: C-AGTGA\newline
 s4: CGGATT-}
 
 \section*{Aufgabe 4}%T
-Annahme: $M(\lfloor \frac{k+1}{2}\rfloor) > 3M$, also soll 
-$M(\lfloor \frac{k+1}{2}\rfloor) = \Sigma_{j=1}^k d(s_{\lfloor \frac{k+1}{2}\rfloor}, s_j)$ größer als
+Annahme: $M(\lfloor \frac{k+1}{2}\rfloor) > 3M$, also soll die kummulierte Distanz der Sequenz $s_{\lfloor \frac{k+1}{2}\rfloor}$
+$M(\lfloor \frac{k+1}{2}\rfloor) = \Sigma_{j=1}^k d(s_{\lfloor \frac{k+1}{2}\rfloor}, s_j)$ zu allen anderen Sequenzen größer als
 das dreifache von $M$ sein, wobei nach Def. $M = M(1)$ ist.
 Nach Lemma 6.50 gibt es mehr als $\lfloor \frac{k}{r}\rfloor$ Sequenzen $s_i \in S$, wobei der Konsensus-Fehler von $s_i$ kleiner gleich
 $\frac{2r-1}{r-1}*E_S(s*)$ ist, wobei $1<r \in \mathbb{R}$. Da $r$ echt größer als 1 ist, gibt es mindestens zwischen 0 und $k-1$ Sequenzen,
@@ -115,8 +115,16 @@ Ist $r$ nahe der 1, dann gibt es mehr als $k-1$ Sequenzen $s_i \in S$, deren Kon
 wobei der Vorfaktor immer größer wird, je näher $r$ gegen 1 geht. Im anderen Fall, wenn $r>k$ ist, dann konvergiert der Vorfaktor
 asymptotisch gegen 2, das heißt es gibt mehr als 0, also mindestens eine Sequenz $s_i \in S$, deren Konsensusfehler höchstens doppelt so hoch
 ist wie der minimale Konsensusfehler.\newline
-Angenommen $M(\lfloor \frac{k+1}{2}\rfloor) > 3M$, dann stellt dies einen Widerspruch zu Lemma 6.50 dar, da...\newline
-Also folgt $M(\lfloor \frac{k+1}{2}\rfloor) \leq 3M$
+Angenommen $r=2$, dann gibt es \textit{mehr als} $\lfloor \frac{k}{2}\rfloor$ Sequenzen $s_i \in S$ mit $E_S(s_i) \leq \frac{2*2-1}{2-1}*E_S(s*)
+= 3*E_S(s*)$. Da der sog. Steiner-String s* diejenige Zeichenreihe $\in \Sigma^*$ ist, die den geringsten Konsensusfehler hat, kann man davon
+ausgehen, dass $E_S(s*) \leq M := M(1)$ ist.
+Angenommen $M(\lfloor \frac{k+1}{2}\rfloor) > 3M$, dann stellt dies einen Widerspruch zu Lemma 6.50 dar, denn:\newline
+In diesem Fall gibt es also gemäß Lemma 6.50 \textit{mehr als} $\lfloor \frac{k}{2}\rfloor$ Sequenzen, deren Konsensusfehler $\leq 3*E_S(s*)$ sind, und gemäß
+der Widerspruchs-Annahme gilt gleichzeitig, dass die kummulierte Distanz der  $\lfloor \frac{k+1}{2}\rfloor$-ten Sequenz zu allen anderen
+Sequenzen $>3*M \geq 3*E_S(s_i)$ ist, was nicht sein kann. Denn in diesem Fall kann es nicht mehr als $\lfloor \frac{k}{2}\rfloor$ Sequenzen
+geben, deren Konsensusfehler $\leq 3*E_S(s*)$  ist, da die $\lfloor \frac{k+1}{2}\rfloor$-te Sequenz bereits einen Konsensusfehler von
+mehr als $3*M$ hat, und wir von der Widerspruch-Annahme ausgehen.\newline
+Also folgt $M(\lfloor \frac{k+1}{2}\rfloor) \leq 3M$, was zu zeigen war.
 
 \section*{Aufgabe 1}%U
 \includepdf[pages=1]{1.pdf}
