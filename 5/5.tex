@@ -34,13 +34,19 @@
 \maketitle
 
 \section*{Aufgabe 1}
-Todo
+Sei $S=\{s_w, s_{v_i} : i \in [1:m]\}$. $s_v$ ist optimaler Steinerstring $\Leftrightarrow^{Def. 6.47}$ $E_S(s_v)=min\{E_S(s') : s' \in S\}$,
+d.h. die kummulierte Distanz von $s_v$ zu allen anderen $s' \in S$ ist minimal gegenüber allen Distanzen $E(s')$. Dass $E(s_v)$
+bezüglich zu allen $s_{v_i}$ der String mit min. Konsensusfehler ist, folgt daraus, dass der zu $s_v$ gehörige Knoten zwischen
+seinem Vater und seinen Kindern steht. Es kann weder die kummulierte Distanz eines Kindknoten , noch die des Vaterknoten zu allen
+anderen kleiner sein als $E(s_v)$. Falls $v$ keinen Vater hat und somit die Wurzel von $T$ ist, ist es offensichtlich, dass $s_v$
+die beste Konsensus-Sequenz für alle $s_{v_i}$ ist. Falls $v$ nicht die Wurzel ist, kann die zugehörige Sequenz des Vaters $w$
+oder die eines Kindknotens $v_i$ trotzdem nicht die Konsensus-Sequenz sein, da $v$ im Graphen zwischen diesen steht.
 
 \section*{Aufgabe 2}
-Y
+Siehe schriftlich
 
 \section*{Aufgabe 3}
-Y
+Siehe schriftlich
 
 \section*{Aufgabe 4}
 Todo
