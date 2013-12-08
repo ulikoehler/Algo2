@@ -26,6 +26,7 @@
 %\usepackage{algorithmic}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\usepackage{algpseudocode}
 
+\usepackage[paper=a4paper,includefoot,includehead,left=30mm,right=20mm,top=20mm,bottom=20mm]{geometry}
 %opening
 \title{Übungsblatt 5}
 \author{Uli Köhler (10580373), Tobias Harrer (10575835)}
@@ -180,4 +181,32 @@ AGC-C---
 
 \section*{Aufgabe 4}%T
 
+\begin{alignat}{5}
+ D[s, s_1] &= (d(s_1,s_1)+0) &+{}& (d(s_1,s_2)+0) &=& 0 + 1 &= 1\\
+ D[s, s_2] &= (d(s_2,s_1)+0) &+{}& (d(s_2,s_2)+0) &=& 1 + 0 &= 1\\\hline 
+ D[t, s_3] &= (d(s_3,s_3)+0) &+{}& (d(s_3,s_4)+0) &=& 0 + 3 &= 3\\
+ D[t, s_4] &= (d(s_4,s_3)+0) &+{}& (d(s_4,s_4)+0) &=& 3 + 0 &= 3\\\hline
+ D[r, s_1] &= (d(s_1,s_1)+D[s, s_1]) &+{}& (d(s_1,s_3)+D[t, s_3]) &=& (0+1) + (1+3) &= 5\\
+ D[r, s_2] &= (d(s_2,s_2)+D[s, s_2]) &+{}& (d(s_2,s_4)+D[t, s_4]) &=& (0+1) + (2+3) &= 6\\
+ D[r, s_3] &= (d(s_3,s_1)+D[s, s_1]) &+{}& (d(s_3,s_3)+D[t, s_3]) &=& (1+1) + (0+3) &= 5\\
+ D[r, s_4] &= (d(s_4,s_2)+D[s, s_2]) &+{}& (d(s_4,s_4)+D[t, s_4]) &=& (2+1) + (0+3) &= 6
+\end{alignat}
+
+Also: $r = s_1 \vee r = s_3 ; s = s_1 ; t = s_3$. Für $r$ sind $s_1$ und $s_3$ gleichwertig (beide haben den min. Score 5).
 \end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
