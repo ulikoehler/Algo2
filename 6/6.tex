@@ -174,12 +174,40 @@ A-GGCTT-
 AGC-C---
 \end{verbatim}
 
-\section*{Aufgabe 2}%U
+\section*{Aufgabe 2}
+T wird gemäß Def. 6.60 als gewurzelter Baum betrachtet, also auch gerichtet (\url{http://de.wikipedia.org/wiki/Gewurzelter\_Baum)})
+und als Out-Tree interpretiert, d.h. Kanten gehen von der Wurzel aus und somit vom Vater- zum Kindknoten.
+Daher beinhalten alle legalen Kantenpaare die vier Kanten (s,u), (r,s), (r,t), (t,v):
 
-\section*{Aufgabe 3}%T
+\begin{enumerate}
+ \item Kante (s,u):
+  \begin{itemize}
+        \item $(s_1,s_1)$,$(s_2,s_2)$, da $s=s'\in S(u)$
+        \item $(s,s')=\{(s_3,s_1),(s_3,s_2)\}$, da $s\in S(s)\textbackslash S(u) \wedge s'\in S(u)$
+  \end{itemize}
+\item Kante (r,s):
+  \begin{itemize}
+        \item $(s_1,s_1)$,$(s_2,s_2)$, $(s_3,s_3)$ da $s=s'\in S(s)$
+        \item alle Paare $(s,s')$, so dass: $s\in\{s_4,s_5,s_6,s_7\} = S(r)\textbackslash S(s) \wedge s'\in 
+        \{s_1,s_2,s_3\} = S(s)$
+   \end{itemize}
+\item Kante (r,t):
+  \begin{itemize}
+        \item $(s_4,s_4)$,$(s_5,s_5)$, $(s_6,s_6)$, $(s_7,s_7)$ da $s=s'\in S(t)$
+        \item alle Paare $(s,s')$, so dass: $s\in \{s_1,s_2,s_3\} = S(r)\textbackslash S(t) \wedge s'\in 
+        \{s_4,s_5,s_6,s_7\} = S(t)$
+       \end{itemize}
+\item Kante (t,v):
+  \begin{itemize}
+        \item $(s_5,s_5)$, $(s_6,s_6)$ da $s=s'\in S(v)$
+        \item alle Paare $(s,s')$, so dass: $s\in \{s_4,s_7\} = S(t)\textbackslash S(v) \wedge s'\in 
+        \{s_5,s_6\} = S(v)$
+       \end{itemize}
+\end{enumerate}
+\section*{Aufgabe 3}
+fehlt
 
-
-\section*{Aufgabe 4}%T
+\section*{Aufgabe 4}
 
 \begin{alignat}{5}
  D[s, s_1] &= (d(s_1,s_1)+0) &+{}& (d(s_1,s_2)+0) &=& 0 + 1 &= 1\\
