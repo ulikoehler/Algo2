@@ -78,7 +78,7 @@ def getSubsequences(sequence, n):
     ['abc', 'bcd', 'cde', 'def', 'efa', 'fab', 'abc']
     """
     #Zip with itself n times
-    return ("".join(ss) for ss in izip(*[sequence[i:] for i in range(n)]))
+    return ("".join(ss) for ss in itertools.izip(*[sequence[i:] for i in range(n)]))
 
 def getBLASTWords(sequence, length, alphabet, mat, threshold):
     """
