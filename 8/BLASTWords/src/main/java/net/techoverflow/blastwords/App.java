@@ -3,6 +3,8 @@ package net.techoverflow.blastwords;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 import org.apache.commons.io.IOUtils;
 import org.python.core.PyList;
 import org.python.core.PySystemState;
@@ -24,10 +26,11 @@ public class App {
         //See blastwords.py in the JAR for detailed sources
         PySystemState.initialize(System.getProperties(), System.getProperties(), args);
         PythonInterpreter.initialize(System.getProperties(), System.getProperties(), args);
-        //Fill sys.argv
+        //Fill sys.argv. Note that sys.argv[0] is the program name, but args[0] is not!
         PySystemState state = new PySystemState();
-        state.argv = new PyList(Arrays.asList(args));
-        System.out.println(state.argv);
+        LinkedList<String> argv = new LinkedList<String>(Arrays.asList(args));
+        argv.addFirst("myprogram"); // = sys.argv[0]
+        state.argv = new PyList(argv);
         //Run the script
         PythonInterpreter interp = new PythonInterpreter(null, state);
         InputStream script = App.class.getClassLoader().getResourceAsStream("blastwords.py");

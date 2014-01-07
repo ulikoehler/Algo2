@@ -7,6 +7,7 @@ Optimized for simplicity.
 Uses neither https://xkcd.com/208/ nor Perl. Nor Java.
 """
 import itertools
+#What a pity we can't use numpy in Jython...
 
 __author__  = "Uli Koehler"
 __license__ = "Apache License v2.0"
@@ -14,7 +15,7 @@ __version__ = "3.14"
 
 def newMatNxN(n):
     """Generate a new nxn matrix. Jython workaround for lack of Numpy"""
-    return [[] for i in range(n)]
+    return [[None] * n for i in range(n)]
 
 def readMatblasAlignmentMatrix(filename):
     """
@@ -35,11 +36,17 @@ def readMatblasAlignmentMatrix(filename):
         else: #Matrix row
             parts = line.split()
             assert(len(parts) == len(columns) + 1)
-            #Assume rows are in the same order as columns
+            #Assume rows are in the same order as column
             assert(columns[currentRow] == parts[0])
             for x in range(len(columns)):
-                matrix[x][currentRow] = int(parts[1:])
+                matrix[x][currentRow] = int(parts[x + 1])
             currentRow += 1
+    #Postcondition: Matrix filled completely (numpy would be *quite* nice)
+    for x in range(len(columns)):
+        for y in range(len(columns)):
+            assert matrix[x][y] is not None
+            #Assert symmetry
+            assert matrix[x][y] == matrix[y][x]
     infile.close()
     return (columns, matrix)
 
@@ -82,10 +89,10 @@ def getSubsequences(sequence, n):
 
 def getBLASTWords(sequence, length, alphabet, mat, threshold):
     """
-    Given a seuqence, a length, an alphabet and a substitution matrix, calculates all BLAST words below the given threshold
+    Given a sequence, a word length, an alphabet and a substitution matrix, calculates all BLAST words below the given threshold
     """
     blastWords = set()
-    for word in genWords(alphabet, 4):
+    for word in genWords(alphabet, length):
         for subsequence in getSubsequences(sequence, length):
             distance = wordDistance(word, subsequence, mat, alphabet)
             # Similarity metric = operator >=
@@ -99,7 +106,7 @@ def getBLASTWords(sequence, length, alphabet, mat, threshold):
 def writeBLASTWords(outfilename, sequence, length, alphabet, mat, threshold):
     outfile =  open(outfilename, "w");
     for word in getBLASTWords(sequence, length, alphabet, mat, threshold):
-        print >>outfile, name
+        print >>outfile, word
     outfile.close()
 
 def readFASTASimple(filename):
@@ -117,18 +124,18 @@ def readFASTASimple(filename):
 def main():
     import sys
     #The QnD way
-    print sys.argv
     #Our Jython wrapper makes arguments begin at index 0 instead of (cython) 1
-    wordLength = int(sys.argv[0])
-    threshold = float(sys.argv[1])
-    sequenceFile = sys.argv[2]
-    scoringMatrixFile = sys.argv[3]
-    outputFile = sys.argv[4]
+    wordLength = int(sys.argv[1])
+    threshold = float(sys.argv[2])
+    sequenceFile = sys.argv[3]
+    scoringMatrixFile = sys.argv[4]
+    outputFile = sys.argv[5]
     sequence = readFASTASimple(sequenceFile)
     alphabet, mat = readMatblasAlignmentMatrix(scoringMatrixFile)
     #Do it now.
-    writeBLASTWords(outputFile, sequence, length. alphabet, mat, threshold)
-        
+    writeBLASTWords(outputFile, sequence, wordLength, alphabet, mat, threshold)
+
+#Run main both in Jython and in standalone mode
 main()
 
 def run_tests():
