@@ -1,0 +1,77 @@
+\documentclass[a4paper,10pt,oneside,leqno]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage{listingsutf8}
+\usepackage[pdftex]{graphicx}
+%\usepackage[ngerman]{babel}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{pdfpages}
+\usepackage{textcomp}
+\usepackage{amsmath}
+%\usepackage{lipsum}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{booktabs}
+%usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern} %Latin modern = enhanced CM font
+\usepackage{xspace} %Space enhancements
+%\usepackage{algorithmic}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{algpseudocode}
+
+\usepackage[paper=a4paper,includefoot,includehead,left=30mm,right=20mm,top=20mm,bottom=20mm]{geometry}
+%opening
+\title{Übungsblatt 9}
+\author{Uli Köhler (10580373), Tobias Harrer (10575835)}
+\begin{document}
+
+\maketitle
+
+\section*{Aufgabe 1}%U
+
+
+\section*{Aufgabe 2}%T
+Beim siebten Wurf fiel eine ``sechs''. Die Wahrscheinlichkeit dafür ist gemäß der geometrischen Verteilung:
+P(X=7) = $(1-\frac{1}{6})^{7-1}*\frac{1}{6} = (\frac{5}{6})^{6}*\frac{1}{6} = 0,055816329 \approx 5,58\%$\newline
+Dabei ist $H_0:$ ``Würfel ist fair'' und $H_1:$ ``Würfel benachteiligt die sechs''. Wir lehnen $H_0$ ab, falls
+$P(X=N)<\alpha = 0.05$ ist. Wie wir gesehen haben ist für $N=7$ das SIgnifikanzniveau noch nicht unterschritten.
+Für $N=8$ gilt hingegen P(X=8) = $(1-\frac{1}{6})^{8-1}*\frac{1}{6} = (\frac{5}{6})^{7}*\frac{1}{6} = 
+0,046513608 \approx 4,67\%$, das heißt der Signifikanzpunkt liegt bei $k=8$ und der kritische Bereich $C = \{8,\infty)$.
+Da das Ergebnis (7) unserer Teststatistik nahe bei, aber dennoch nicht in $C$ liegt, müssen wir $H_0$ annehmen.
+(Verwendet wurde random.py statt eines Würfels, daher war das auch zu erwarten)
+
+\section*{Aufgabe 3}%T
+\subsection*{a)}
+$\alpha=0.05$, $\phi_0=\frac{1}{6}$,$\phi_1=\frac{1}{7}$, $\Lambda$\newline
+$L(x;\frac{1}{6}) = \frac{1}{6}*(\frac{1}{6})^{x-1}, L(x;\frac{1}{7}) = \frac{1}{7}*(\frac{1}{7}^{x-1})$
+
+\subsection*{b)}
+
+
+\section*{Aufgabe 4}%U
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
